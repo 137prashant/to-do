@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f3f4f6;
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide oversized native date/time picker icons; we use small custom icons */
+input[type='date'],
+input[type='time'] {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type='date']::-webkit-calendar-picker-indicator,
+input[type='time']::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  width: 2.75rem;
+  height: 100%;
+  cursor: pointer;
+}
+
+.input-field {
+  position: relative;
+}
+
+/* Keep search field width stable; hide browser clear button overlap */
+.search-input::-webkit-search-cancel-button {
+  margin-right: 1.75rem;
+}
