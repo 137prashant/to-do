@@ -1,46 +1,76 @@
 # To-Do List Mobile App
 
-React + Tailwind CSS to-do app for the SDE-1 assignment. Tasks are stored in **localStorage** (no MongoDB / backend).
+A responsive task-management web app inspired by the To-Do List mobile Figma design. Users can create, edit, delete, and search tasks, track weekly progress, and mark items as completed or in progress. All data is persisted in the browser via **localStorage**—no backend or database required.
+
+## Live demo
+
+**[https://calm-fairy-2971cc.netlify.app/](https://calm-fairy-2971cc.netlify.app/)**
+
+## Tech stack
+
+- **React** (Vite)
+- **Tailwind CSS**
+- **localStorage** for task persistence
 
 ## Features
 
-- Get Started splash screen (Figma)
-- Home: week calendar (Mon–Sun), complete/pending cards, weekly progress, task list
-- Create / edit / delete tasks with title, description, date, time, priority
-- Mark tasks completed or in progress
-- Search by title or description
-- Swipe left on a task row to delete (mobile)
+- **Onboarding** — splash screen with Get Started flow
+- **Home** — week calendar (Monday–Sunday), task summary cards, weekly progress bar, daily/weekly task list
+- **Task management** — title, description, date, start/end time, and priority (low / medium / high)
+- **Status** — mark tasks completed or in progress; counts update on the home screen
+- **Search** — filter tasks by title or description
+- **Responsive layout** — mobile-first UI that adapts for tablet and desktop
+- **Gestures** — swipe left on a task row to delete (touch devices)
 
-## Run locally
+## Getting started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) 18 or later
+- npm
+
+### Installation
 
 ```bash
+git clone https://github.com/137prashant/to-do.git
+cd to-do
 npm install
+```
+
+### Development
+
+```bash
 npm run dev
 ```
 
-Open the URL shown in the terminal (usually `http://localhost:5173`).
+The app runs at `http://localhost:5173` (or the port shown in the terminal).
 
-## Build
+### Production build
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Deploy on Netlify
+`npm run build` outputs static files to `dist/`. `npm run preview` serves that build locally for verification.
 
-1. Push this repo to GitHub.
-2. In Netlify: **Add new site** → **Import from Git** → select the repo.
-3. Build command: `npm run build`
-4. Publish directory: `dist`
+## Scripts
 
-Or drag-and-drop the `dist` folder after `npm run build`.
+| Command           | Description                    |
+| ----------------- | ------------------------------ |
+| `npm run dev`     | Start development server       |
+| `npm run build`   | Create production build        |
+| `npm run preview` | Preview the production build   |
 
 ## Project structure
 
 ```
 src/
-  components/   # UI screens and pieces
-  hooks/        # useTasks + localStorage
-  utils/        # dates and task helpers
+  components/   # Screens and UI (Home, Search, TaskSheet, etc.)
+  hooks/        # Task state and localStorage sync
+  utils/        # Date/week helpers and seed data
 ```
+
+## Data model
+
+Tasks are stored as JSON in `localStorage` under the key `todo-app-tasks`. Each task includes id, title, optional description, date, start/end time, priority, status, and `createdAt`.
